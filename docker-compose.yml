@@ -1,0 +1,48 @@
+version: '3'
+services:
+
+  nodecore:
+
+    build:
+      context: .
+      dockerfile: nodecore.Dockerfile
+
+    command: ['-Drpc.bind.address=0.0.0.0', '-Ducp.mining.bind.address=0.0.0.0']
+
+    volumes:
+      - data:/data
+
+    networks:
+      - default
+
+    ports:
+      - ${UCP_PORT:-8501}:8501
+      - ${PEER_PORT:-6500}:6500
+  
+  nodecore-pow:
+   
+    environment: 
+      - CORES=4
+      - POOL_ADDR=nodecore:${UCP_PORT:-8501}
+      - ADDR=${ADDR}
+
+    networks:
+      - default
+
+    build:
+      context: .
+      dockerfile: nodecore-pow.Dockerfile
+  
+  nodecore-cli:
+
+    networks:
+      - default
+
+    build:
+      context: .
+      dockerfile: nodecore-cli.Dockerfile
+
+
+volumes:
+  data:
+      
