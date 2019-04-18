@@ -1,9 +1,9 @@
 FROM alpine
 
-ARG VERSION=0.1.0
+ARG VERSION=0.4.3
 
 WORKDIR /tmp
-RUN wget -O pow.tar https://github.com/VeriBlock/nodecore-releases/releases/download/v${VERSION}/nodecore-pow-${VERSION}.tar
+RUN wget -O pow.tar https://github.com/VeriBlock/nodecore-releases/releases/download/v${VERSION}/veriblock-nodecore-all-${VERSION}.tar
 
 FROM openjdk:8-jre-slim
 

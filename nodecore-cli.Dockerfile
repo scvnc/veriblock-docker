@@ -1,11 +1,11 @@
 FROM alpine
 
-ARG VERSION=0.1.0
+ARG VERSION=0.4.3
 
 WORKDIR /tmp
-RUN wget -O cli.tar https://github.com/VeriBlock/nodecore-releases/releases/download/v${VERSION}/nodecore-cli-${VERSION}.tar
+RUN wget -O cli.tar https://github.com/VeriBlock/nodecore-releases/releases/download/v${VERSION}/veriblock-nodecore-all-${VERSION}.tar
 
-FROM openjdk:8-jre-slim
+FROM store/oracle/serverjre:8
 
 COPY --from=0 /tmp/cli.tar /tmp/cli.tar
 RUN tar --strip-components=1 -C / -xvf /tmp/cli.tar && \
