@@ -1,5 +1,8 @@
 # veriblock-docker
 
+| :exclamation:  NOT MAINTAINED           |
+|-----------------------------------------|
+
 VeriBlock distributables with Docker
 
 ## Add Oracle JDK
